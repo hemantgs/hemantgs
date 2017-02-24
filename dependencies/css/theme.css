@@ -1,0 +1,97 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Raleway', sans-serif;
+    color: #232323;
+    background: url("img/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    /*text-shadow: 0 1px 3px rgba(0,0,0,.5);*/
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.display-1, .display-2, .display-3, .display-4 {
+    font-family: 'Montserrat', sans-serif;
+    word-break: break-word;
+    word-wrap: break-word; }
+
+input, textarea {
+    font-family: "Raleway"; }
+
+.display-1 {
+    font-size: 4.39rem;
+    font-weight: 600;
+    letter-spacing: -2px;
+    margin-bottom: 0.2843em;
+    margin-top: 3.9rem; }
+
+.az-section-title {
+    font-size: 7.125rem !important; }
+
+.az-section-lead {
+    font-family: Lora;
+    font-size: 2.5rem !important;
+    font-style: italic;
+    margin-top: -1em;
+    text-align: justify;}
+
+
+.az-table-cell {
+    display: table-cell;
+    float: none;
+    padding-bottom: 0;
+    padding-top: 180px;
+    padding-left: 305px;
+    position: relative;
+    vertical-align: middle; }
+
+.az-section-btn .btn {
+    font-size: 1.75rem !important;
+    line-height: 1.5;
+    padding: 0.75rem 2.1875rem; }
+
+.btn-primary-outline {
+    background: none;
+    border-color: #040404;
+    color: #040404; }
+.btn-primary-outline:focus, .btn-primary-outline.focus, .btn-primary-outline:active, .btn-primary-outline.active {
+    color: #fff;
+    background-color: #040404;
+    border-color: #040404; }
+.btn-primary-outline:hover {
+    color: #fff;
+    background-color: #040404;
+    border-color: #040404; }
+.btn-primary-outline.disabled, .btn-primary-outline:disabled {
+    color: #fff !important;
+    background-color: #040404 !important;
+    border-color: #040404 !important;
+    opacity: 0.85; }
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+p {
+  font-size: 20px;
+}
+p.small {
+  font-size: 16px;
+}
+
+
+
+#mainNav {
+    font-family: Raleway;
+    font-size: 1.75rem ;
+    font-weight: bold;
+  border-width: 0px;
+  -webkit-box-shadow: 0px 0px;
+  box-shadow: 0px 0px;
+  background-color: rgba(0,0,0,0.0);
+  background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+  background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+  background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);}
