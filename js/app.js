@@ -73,6 +73,8 @@ function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthSer
         email:''
     }
 
+
+
     $scope.googleLogin = function(){
         var params ={
             'clientid':'557541505759-si4vmvm7fqa9asso75kankggqf01i4l7.apps.googleusercontent.com',
@@ -99,8 +101,20 @@ function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthSer
 
         }
     }
+
+$scope.fbLogin = function(){
+    FB.login(function(response){
+       if(response.authResponse){
+           FB.api('/me','GET',{fields:'email,first_name,name'},function(result){
+               console.log(result.name);
+               AuthService.setUser(result.name);
+               $state.go('home');
+           })
+       }
+    });
 }
 
+}
 function homeControllerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthService){
         console.log(AuthService.getUser());
         $rootScope.gmail.username = AuthService.getUser();
