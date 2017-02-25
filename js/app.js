@@ -1,7 +1,7 @@
 /**
  * Created by GS on 2/18/2017.
  */
-var azaleaaRoot = angular.module('azaleaaRoot', ['ngRoute','ui.router','ngStorage']);
+var azaleaaRoot = angular.module('azaleaaRoot', ['ngRoute','ui.router','ngStorage','ngAnimate','ui.bootstrap']);
 
 
 /*azaleaaRoot.config(function($routeProvider){
@@ -33,7 +33,23 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
             controller:'authController'
         })
 
-    ;
+        .state('modal', {
+            url: '/modal',
+            onEnter: ['$stateParams', '$state', '$uibModal',
+                function ($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'pages/home.html',
+                        controller: 'homeController',
+                    })
+                        .result.then(function () {
+                        // change route after clicking OK button
+                        //$state.transitionTo('home');
+                    }, function () {
+                        // change route after clicking Cancel button or clicking background
+                      //  $state.transitionTo('home');
+                    });
+                }]
+        });
 
 });
 
@@ -45,6 +61,18 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
         }
     });
 });*/
+
+azaleaaRoot.run(['$rootScope', '$uibModalStack',
+    function($rootScope, $uibModalStack) {
+        $rootScope.$on('$stateChangeStart', function() {
+            var top = $uibModalStack.getTop();
+            if (top) {
+                $uibModalStack.dismiss(top.key);
+            }
+        });
+    }
+]);
+
 
 azaleaaRoot.service('AuthService', function($q, $http,$localStorage) {
     var self= this;
@@ -127,7 +155,7 @@ function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthSer
                 user.email = resp.emails[0].value;
                 console.log(user);
                AuthService.setUser(user);
-               $state.go('home');
+               $state.go('modal');
             });
 
         }
@@ -142,7 +170,7 @@ $scope.fbLogin = function(){
                //user.email = result.emails[0].value;
                console.log(user);
                AuthService.setUser(user);
-               $state.go('home');
+               $state.go('modal');
            })
        }
     });
@@ -155,8 +183,12 @@ function homeControllerFunct($scope,$filter,$http,$location,$state,$rootScope,Au
         $rootScope.gmail.email = AuthService.getUser().email;
         $rootScope.gmail.isAuth = AuthService.isAuthorized();
 
-
-
-
+    $scope.cancel = function() {
+        $scope.$dismiss();
+    };
+    // close modal after clicking OK button
+    $scope.ok = function() {
+        $scope.$close(true);
+    }
 
 }
