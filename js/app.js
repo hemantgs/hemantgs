@@ -32,6 +32,7 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
             templateUrl:'pages/landing.html',
             controller:'authController'
         })
+
     ;
 
 });
@@ -47,14 +48,20 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
 
 azaleaaRoot.service('AuthService', function($q, $http,$localStorage) {
     var self= this;
-    this.user ='';
+    this.user ={};
+    this.isAuth = undefined;
 
             this.setUser =function(_user){
-                self.user = _user;
+                self.user.username = _user.username;
+                self.user.email = _user.email;
+                self.isAuth=true;
             },
             this.getUser = function getUser()
             {
                 return self.user;
+            }
+            this.isAuthorized = function isAuthorized(){
+                return self.isAuth;
             }
 
 
@@ -63,17 +70,37 @@ azaleaaRoot.service('AuthService', function($q, $http,$localStorage) {
 
 azaleaaRoot.controller('authController', ['$scope','$filter','$http','$location','$state','$rootScope','AuthService',contollerFunct]);
 azaleaaRoot.controller('homeController', ['$scope','$filter','$http','$location','$state','$rootScope','AuthService',homeControllerFunct]);
+azaleaaRoot.controller('baseController', ['$scope','$filter','$http','$location','$state','$rootScope','AuthService',baseControllerFunct]);
 
 
+function baseControllerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthService) {
+    $rootScope.gmail = {
+        username: 'Guest',
+        email: '',
+        isAuth: false
+    }
 
+    $scope.signOut = function(){
 
-function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthService){
-    $rootScope.gmail ={
-        username:'Guest',
-        email:''
+        gapi.auth.signOut();
+
+        FB.getLoginStatus(function(response){
+            if(response.status === 'connected'){
+                console.log('inside sign out');
+                FB.logout();
+            }
+            else if (response.status === 'not_authorised'){
+
+            }
+            else {
+
+            }
+        });
     }
 
 
+}
+function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthService){
 
     $scope.googleLogin = function(){
         var params ={
@@ -95,7 +122,11 @@ function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthSer
                 }
             );
             request.execute(function(resp){
-               AuthService.setUser(resp.displayName);
+                var user = {};
+                user.username = resp.displayName;
+                user.email = resp.emails[0].value;
+                console.log(user);
+               AuthService.setUser(user);
                $state.go('home');
             });
 
@@ -106,8 +137,11 @@ $scope.fbLogin = function(){
     FB.login(function(response){
        if(response.authResponse){
            FB.api('/me','GET',{fields:'email,first_name,name'},function(result){
-               console.log(result.name);
-               AuthService.setUser(result.name);
+               var user = {};
+               user.username = result.name;
+               //user.email = result.emails[0].value;
+               console.log(user);
+               AuthService.setUser(user);
                $state.go('home');
            })
        }
@@ -117,6 +151,12 @@ $scope.fbLogin = function(){
 }
 function homeControllerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthService){
         console.log(AuthService.getUser());
-        $rootScope.gmail.username = AuthService.getUser();
+        $rootScope.gmail.username = AuthService.getUser().username;
+        $rootScope.gmail.email = AuthService.getUser().email;
+        $rootScope.gmail.isAuth = AuthService.isAuthorized();
+
+
+
+
 
 }

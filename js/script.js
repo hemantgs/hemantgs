@@ -12,19 +12,10 @@ window.fbAsyncInit = function() {
     FB.init({
         appId      : '1292497704171994',
         xfbml      : true,
-        version    : 'v2.8'
+        version    : 'v2.8',
+        status     :true
     });
-    FB.getLoginStatus(function(response){
-        if(response.status === 'connected'){
 
-        }
-        else if (response.status === 'not_authorised'){
-
-        }
-        else {
-
-        }
-    });
 };
 
 (function(d, s, id){
