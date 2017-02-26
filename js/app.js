@@ -38,8 +38,9 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
             onEnter: ['$stateParams', '$state', '$uibModal',
                 function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
-                        templateUrl: 'pages/home.html',
+                        templateUrl: 'pages/reg-modal.html',
                         controller: 'homeController',
+                        windowClass: 'app-modal-window'
                     })
                         .result.then(function () {
                         // change route after clicking OK button
