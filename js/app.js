@@ -99,10 +99,10 @@ azaleaaRoot.service('AuthService', function($q, $http,$localStorage) {
 
 azaleaaRoot.controller('authController', ['$scope','$filter','$http','$location','$state','$rootScope','AuthService',contollerFunct]);
 azaleaaRoot.controller('homeController', ['$scope','$filter','$http','$location','$state','$rootScope','AuthService',homeControllerFunct]);
-azaleaaRoot.controller('baseController', ['$scope','$filter','$http','$location','$state','$rootScope','AuthService',baseControllerFunct]);
+azaleaaRoot.controller('baseController', ['$scope','$filter','$http','$location','$state','$rootScope','$route','AuthService',baseControllerFunct]);
 
 
-function baseControllerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthService) {
+function baseControllerFunct($scope,$filter,$http,$location,$state,$rootScope,$route,AuthService) {
     $rootScope.gmail = {
         username: 'Guest',
         email: '',
@@ -125,6 +125,12 @@ function baseControllerFunct($scope,$filter,$http,$location,$state,$rootScope,Au
 
             }
         });
+        $rootScope.gmail = {
+            username: 'Guest',
+            email: '',
+            isAuth: false
+        }
+        $route.reload();
     }
 
 
