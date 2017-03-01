@@ -25,16 +25,18 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
             url: '/home',
             templateUrl: 'pages/home.html',
             controller: 'homeController',
-            authFlag: true
+            authFlag: true,
+            abstract:true
         })
+
         .state('landing',{
             url:'/landing',
             templateUrl:'pages/landing.html',
             controller:'authController'
         })
 
-        .state('modal', {
-            url: '/modal',
+        .state('home.modal', {
+            url: '',
             onEnter: ['$stateParams', '$state', '$uibModal',
                 function ($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -164,7 +166,7 @@ function contollerFunct($scope,$filter,$http,$location,$state,$rootScope,AuthSer
                 user.email = resp.emails[0].value;
                 console.log(user);
                AuthService.setUser(user);
-               $state.go('modal');
+               $state.go('home.modal');
             });
 
         }
@@ -179,7 +181,7 @@ $scope.fbLogin = function(){
                //user.email = result.emails[0].value;
                console.log(user);
                AuthService.setUser(user);
-               $state.go('modal');
+               $state.go('home.modal');
            })
        }
     });
