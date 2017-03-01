@@ -40,7 +40,9 @@ azaleaaRoot.config(function($stateProvider, $urlRouterProvider) {
                     $uibModal.open({
                         templateUrl: 'pages/reg-modal.html',
                         controller: 'homeController',
-                        windowClass: 'app-modal-window'
+                        windowClass: 'app-modal-window',
+                        backdrop  : 'static',
+                        keyboard  : false
                     })
                         .result.then(function () {
                         // change route after clicking OK button
