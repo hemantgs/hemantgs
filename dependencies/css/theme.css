@@ -11,16 +11,34 @@ body {
     /*text-shadow: 0 1px 3px rgba(0,0,0,.5);*/
 }
 
-.centered-form{
+/*.centered-form{
     margin-top: 60px;
 
 }
-
-.centered-form .panel{
+*/
+.reg-modal .panel{
     background: rgba(255, 255, 255, 0.8);
     box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
     position: relative;
-    right:300px;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .app-modal-window .modal-content {
