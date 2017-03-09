@@ -12,7 +12,7 @@ var azaleaaRoot = angular.module('azaleaaRoot', ['ngRoute','ui.router','ngStorag
         })
 
         .when('/login',{
-            templateUrl:'pages/landing.html',
+            templateUrl:'pages/landing.html.bak',
             controller:'authController'
         })
 });*/
@@ -203,3 +203,12 @@ function homeControllerFunct($scope,$filter,$http,$location,$state,$rootScope,Au
     }
 
 }
+
+
+$(window).scroll(function() {
+    if ($(document).scrollTop() > 50) {
+        $('nav').addClass('transparent');
+    } else {
+        $('nav').removeClass('transparent');
+    }
+});

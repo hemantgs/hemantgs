@@ -11,16 +11,34 @@ body {
     /*text-shadow: 0 1px 3px rgba(0,0,0,.5);*/
 }
 
-.centered-form{
+/*.centered-form{
     margin-top: 60px;
 
 }
-
-.centered-form .panel{
+*/
+.reg-modal .panel{
     background: rgba(255, 255, 255, 0.8);
     box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
     position: relative;
-    right:300px;
+}
+
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
 }
 
 .app-modal-window .modal-content {
@@ -119,7 +137,7 @@ p.small {
 
 
 
-#mainNav {
+/*#mainNav {
     font-family: Raleway;
     font-size: 1.75rem ;
     font-weight: bold;
@@ -129,7 +147,24 @@ p.small {
   background-color: rgba(0,0,0,0.0);
   background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
   background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-  background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);}
+  background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);}*/
+
+nav.navbar{
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+/*.navbar-inverse {
+    background-color: rgba(118, 248, 208, 0.02);
+    border-color: rgba(255, 255, 255, 0);
+}*/
+
+nav.navbar.transparent {
+    background-color: rgb(0, 0, 0);
+    opacity: 0;
+}
+
+
 
 
 .fade {
@@ -156,4 +191,117 @@ p.small {
 }
 .fade.ng-leave-active {
     opacity: 0;
+}
+
+
+/*------------------------*****-------------------------*/
+.boxedleft {
+    border-radius: 25px;
+    float: left;
+    width: 300px;
+    border: 5px solid #000;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+.boxedright {
+    border-radius: 25px;
+    float: right;
+    width: 300px;
+    border: 5px solid #000;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+.boxedcenter {
+    float: center;
+    width: 900px;
+    border: 200px black;
+    padding: 5px;
+    margin: 50px;
+    text-align: center;
+}
+.textleft{
+    text-align: left;
+    font-size: 200%;
+    border-radius: 25px;
+    border: 5px;
+    padding: 20px;
+    width: 600px;
+    height: 150px;
+}
+.textright{
+    text-align: right;
+    font-size: 200%;
+}
+.textcenter{
+    text-align: center;
+}
+#circular{
+    border-radius: 50%;
+    background: #73AD21;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+}
+.floatleft0{
+    left:0px;
+}
+.floatleft400{
+    left:400px;
+}
+.floatleft800{
+    left:800px;
+}
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #fff;
+    line-height: 200px;
+    text-align: center;
+    background: #000
+}
+#rcorners2 {
+    border-radius: 25px;
+    border: 5px solid #000;
+    padding: 20px;
+    width: 200px;
+    height: 250px;
+}
+.iLB {
+    display: inline-block;
+    margin: 55px;
+}
+.iLBlinks {
+    display: inline-block;
+    margin: 120px;
+}
+.leftfloat{
+    float: left;
+}
+.rightfloat{
+    float: right;
+}
+.centerfloat{
+
+}
+.parent {
+    text-align: justify;
+    margin: 25px;
+}
+
+.parent:after {
+    content: " ";
+    display: inline-block;
+    width: 100%;
+}
+
+.parent div {
+    display: inline-block;
+    border: 10px solid;
+    margin: 5px;
+    width: 225px;
 }
